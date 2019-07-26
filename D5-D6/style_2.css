@@ -1,0 +1,47 @@
+html,body,div,p,a,h1,h2{
+	margin: 0;
+	padding: 0;
+	
+}
+body{
+	font-size: 14px;
+	font-weight: 400;
+	height: 100%;
+}
+.left{
+	float: left;
+	width: 220px;
+	height: 720px;
+	background-color: #4682B4;
+}
+
+.container{
+	margin-left: 250px;
+	padding-top: 20px;
+}
+.title1{
+	margin-top: 50px;
+	font-size: 28px;
+	font-weight: 600;
+	text-align: center;
+	color: #FFFFFF;
+}
+.title2{
+	font-size: 22px;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+.title3{
+	font-size: 16px;
+	font-weight: 600;
+	margin-right: 10px;
+}
+.content{
+	margin-bottom: 20px;
+}
+.child_content:nth-child(1){
+	margin-bottom: 20px;
+}
+.personal{
+	margin-right: 30px;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>        
+    <input id="first-number" type="number" value="0" placeholder="第一个数字">
+    <input id="second-number" type="number" value="0" placeholder="第二个数字">
+    <button id="add-btn" onclick="plus()">加</button>
+    <button id="minus-btn" onclick="minus()">减</button>
+    <button id="times-btn" onclick="multiply()">乘</button>
+    <button id="divide-btn" onclick="division()">除</button>
+    <p id="result">运算结果:</p>
+    <script>
+    	var first,second;
+		function plus(){
+			first=Number(document.getElementById("first-number").value);
+    		second=Number(document.getElementById("second-number").value);
+			document.getElementById("result").innerHTML="运算结果:"+(first+second).toFixed(2);
+		}
+		function minus(){
+			first=Number(document.getElementById("first-number").value);
+    		second=Number(document.getElementById("second-number").value);
+			document.getElementById("result").innerHTML="运算结果:"+(first-second).toFixed(2);
+		}
+		function multiply(){
+			first=Number(document.getElementById("first-number").value);
+    		second=Number(document.getElementById("second-number").value);
+			document.getElementById("result").innerHTML="运算结果:"+(first*second).toFixed(2);
+		}
+		function division(){
+			first=Number(document.getElementById("first-number").value);
+    		second=Number(document.getElementById("second-number").value);
+			document.getElementById("result").innerHTML="运算结果:"+(first/second).toFixed(2);
+		}
+    </script>
+</body>
+</html>

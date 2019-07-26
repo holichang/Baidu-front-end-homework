@@ -1,0 +1,40 @@
+html,body,div,p,a,h1,h2{
+	margin: 0;
+	padding: 0;
+	
+}
+html{
+	height: 100%;
+}
+body{
+	padding-left:20px ;
+	font-size: 14px;
+	font-weight: 400;
+}
+.left{
+	margin-top: 20px ;
+	margin-bottom:20px ;
+}
+.title1{
+	font-size: 28px;
+	font-weight: 600;
+}
+.title2{
+	font-size: 22px;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+.title3{
+	font-size: 16px;
+	font-weight: 600;
+	margin-right: 10px;
+}
+.content{
+	margin-bottom: 20px;
+}
+.child_content:nth-child(1){
+	margin-bottom: 20px;
+}
+.personal{
+	margin-right: 30px;
+}
