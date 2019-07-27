@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>     
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <input id="bin-bit" type="number" placeholder="输入转化后二进制数字位数">
+    <button id="trans-btn" onclick="dec2bin()">转化为二进制</button>
+    <p id="result">运算结果</p>
+    <script>
+    /*
+     * 1.Array的方法：
+	 后进先出：push() pop()
+	 先进先出：push（） shift()
+	 unshift()：加在数组前面
+	 2.可以转化为number的字符串与数字相比较，字符串被转为数字 如："3"< 4:true
+          不可以转化为数字的字符串与数字不能相比较,如:"a"< 4:false "a"> 4:false 
+	 "11"<"3":true:均为字符串,则比较ASCII码
+	 */
+	function dec2bin() {
+		var dec=document.getElementById("dec-number").value;
+		var digit = document.getElementById("bin-bit").value;
+		var arr=[];
+		var bina;
+		if(dec<0){
+			window.alert("输入的数值为负数，不合法！");
+			return;
+		}
+		else{
+			while (dec>0){
+				let rem = dec % 2;
+				arr.unshift(rem);
+				dec=(dec-rem)/2;
+			}
+			
+			if(digit < arr.length){
+				console.log("输入的位数小于该二进制数字的实际位数！");	
+			}
+			else if(digit > arr.length){
+				let n=digit-arr.length;
+				for(let i = 0; i<n;i++){
+					arr.unshift(0);
+				}
+			}
+			bina = arr.join("");
+			document.getElementById("result").innerHTML="运算结果："+bina;
+		}
+		
+		 // 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
+	}
+	
+	// 实现党点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
+	// Some coding
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>九九乘法表</title>
+		<style type="text/css">
+			h1{
+				text-align: center;
+			}
+			#multiple{
+				margin: 30px auto;
+			}
+			td{
+				display: inline-block;
+				width: 80px;
+				text-align: center;
+				border: 1px solid #666666;
+				cursor: default;
+			}
+			td:hover{
+				background-color: #666666;
+				color: #FFFFFF;
+			}
+			#greeting{
+				text-align: center;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>九九乘法表</h1>
+		<table id="multiple" cellpadding="5" cellspacing="0">
+		</table>
+		<p id="greeting"></p>
+		<script type="text/javascript">
+			var myTable = document.getElementById("multiple");
+			for (let i = 1;i < 10;i++){
+				let myTr=document.createElement("tr");
+				
+				for(let j = 1;j <= i;j++){
+					let result=i*j;
+					console.log(i+"*"+j+"="+result);
+					let myTd = document.createElement("td");
+					myTd.innerHTML=i+"*"+j+"="+result;
+					myTr.appendChild(myTd);
+				}
+				myTable.appendChild(myTr);
+			}
+			var dat=new Date();
+			var hour=dat.getHours();
+			if(hour<11){
+				document.getElementById("greeting").innerHTML="早上好！";
+			}
+			else if(hour<13){
+				document.getElementById("greeting").innerHTML="中午好！";
+			}
+			else{
+				document.getElementById("greeting").innerHTML="晚上好！";
+			}
+		</script>
+	</body>
+</html>
