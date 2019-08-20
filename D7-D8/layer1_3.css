@@ -1,0 +1,28 @@
+/*用position实现一个两栏布局，左侧占30%宽度，右侧占70%宽度*/
+html,
+body,
+div{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	}
+.container{
+	width: 100%;
+	height: 100%;
+}
+.container>div:nth-child(1){
+	position: absolute;
+	left: 0;
+	width: 30%;
+	height: 100%;
+	background-color: #666666;
+}
+.container>div:nth-child(2){
+	position: absolute;
+	width: 70%;
+	height: 100%;
+	left: 30%;
+	background-color: #A60000;
+}

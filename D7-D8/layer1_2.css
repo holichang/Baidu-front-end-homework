@@ -1,0 +1,39 @@
+/*用float:实现一个两栏布局，左侧占30%宽度，右侧占70%宽度*/
+html,
+body,
+div{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	}
+html,
+body{
+	width: 100%;
+	height: 100%;
+}
+.container{
+	width: 100%;
+	height: 100%;
+}
+.container>div:nth-child(1){
+	float: left;
+	width: 30%;
+	height: 100%;
+	background-color: #666666;
+}
+.container>div:nth-child(2){
+	float: left;
+	/*此处可以用绝对定位
+	 * position:absolute;
+	 * left: 30%;
+	 * 或者margin-left
+	 */
+	width: 70%;
+	height: 100%;
+	background-color: #A60000;
+}
+.container:after{
+	content: "";
+	display: table-cell;
+	clear: both;
+}
