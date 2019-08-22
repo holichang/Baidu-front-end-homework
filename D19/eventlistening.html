@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" content="without querySelector">    
+    <title>JS事件机制</title>
+</head>
+<body>        
+    <div id="wrapper">
+        <div id="news-top" class="section">
+            <h3>Some title</h3>
+            <div class="content">
+                <ul>
+                    <li><span>HTML</span><a href="">Some Link1</a></li>
+                    <li><span>JS</span><a class="active" href="">Some Link2</a></li>
+                    <li><span>CSS</span><a href="">Some Link3</a></li>
+                    <li><span>JS</span><a href="">Some Link4</a></li>
+                </ul>
+            </div>
+            <img src="">
+            <p class="">Some Text</p>
+        </div>
+        <div id="news-normal" class="section">
+            <h3>Some title</h3>
+            <div class="content">
+                <ul>
+                    <li><span>HTML</span><a href="">Some Link1</a></li>
+                    <li><span>HTML</span><a href="">Some Link2</a></li>
+                    <li><span>JS</span><a class="active" href="#">Some Link3</a></li>
+                    <li><span>CSS</span><a href="">Some Link4</a></li>
+                </ul>
+            </div>
+            <img src="">
+            <p class="">Some Text</p>
+        </div>      
+    </div>
+    <div class="result">
+    	<input type="button" value="结果一" onclick="getAllListItem()"/>
+    	<input type="button" value="结果二" onclick="findAllHtmlSpanInOneSection('news-normal')"/>
+    	<input type="button" value="结果三" onclick="findListItem('news-top','JS')"/>
+    	<input type="button" value="结果四" onclick="getActiveLinkContent('news-top')"/>
+    	<p id="show"></p>
+    </div>
+    <script>
+
+    function getAllListItem() {
+        // 返回页面中所有li标签
+        var liList=document.getElementsByTagName("li");
+        var showResult="";
+        for(let i=0;i<liList.length;i++){
+        	showResult = showResult + liList[i].innerHTML+"\n";
+        }
+        document.getElementById("show").innerText=showResult;
+    }
+
+    function findAllHtmlSpanInOneSection(sectionId) {
+        // 返回某个section下所有span中内容为HTML的span标签
+        var showResult="";
+        var myspan=document.getElementsByTagName("span");
+        for(let j=0;j<myspan.length;j++){
+        	if ((myspan[j].innerHTML=="HTML")&&(myspan[j].parentNode.parentNode.parentNode.parentNode.id==sectionId)){
+        		showResult=showResult+myspan[j].innerHTML+"\n";
+        	}
+        }
+         document.getElementById("show").innerText=showResult;
+    }
+
+    function findListItem(sectionId, spanCont) {
+        // 返回某个section下，所有所包含span内容为spanCont的LI标签
+        var showResult="";
+        var myspan=document.getElementsByTagName("span");
+        for(let j=0;j<myspan.length;j++){
+        	if ((myspan[j].innerHTML==spanCont)&&(myspan[j].parentNode.parentNode.parentNode.parentNode.id==sectionId)){
+        		showResult=showResult+myspan[j].parentNode.innerHTML+"\n";
+        	}
+        }
+         document.getElementById("show").innerText=showResult;
+    }
+
+    function getActiveLinkContent(sectionId) {
+    	var showResult="";
+        var myActive=document.getElementsByClassName("active");
+        for(let i=0;i<myActive.length;i++){
+        	if(myActive[i].parentNode.parentNode.parentNode.parentNode.id==sectionId){
+        		showResult=showResult+myActive[i].innerHTML+"<br/>";
+        	}
+        }
+        document.getElementById("show").innerHTML=showResult;
+        // 返回某个section下，class为active的链接中包含的文字内容
+    }
+
+    </script>
+</body>
+</html>
