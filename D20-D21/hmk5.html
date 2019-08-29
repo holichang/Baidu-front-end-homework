@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="hmk3.css" />
+	</head>
+	<body>
+		<div id="container"></div>
+		<script type="text/javascript">
+			/*一秒设为25帧*/
+			window.onload=function(){
+				var con=document.getElementById("container");
+				var posX=0;
+				var posY=-1;
+				function anime(){
+					con.style.backgroundPosition=posX+"px "+posY+"px";
+					if(posY<-7680){
+						posY=-1;
+					}else{
+						posY=posY-480;
+					}
+				};
+				window.setInterval(anime,40);
+				
+			};
+		</script>
+	</body>
+</html>

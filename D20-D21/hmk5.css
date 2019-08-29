@@ -1,0 +1,13 @@
+html,body,div{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#container{
+	margin: 0 auto;
+	width: 480px;
+	height: 480px;
+	background-image: url(gif.jpg);
+	background-position: 0px -1px;
+}

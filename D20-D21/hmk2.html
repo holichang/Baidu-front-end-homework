@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+    <style>
+        select {
+            display: none;
+        }
+        .toshow{
+        	display: initial;
+        }
+    </style>
+</head>
+<body>            
+    <label>
+        <input id="school" name="status" type="radio">
+        School
+    </label>
+    <label>
+        <input id="company" name="status" type="radio">
+        Company
+    </label>
+
+    <select id="school-select">        
+        <option>北京邮电大学</option>
+        <option>黑龙江大学</option>
+        <option>华中科技大学</option>
+    </select>
+
+    <select id="company-select">        
+        <option>百度</option>
+        <option>爱奇艺</option>        
+    </select>
+    <script type="text/javascript">
+    	window.onload=function(){
+    		onSelect();
+    	}
+    	function onSelect(){
+    		var sch=document.getElementById("school");
+    		var com=document.getElementById("company");
+    		var sel = document.querySelectorAll("select");
+    		sch =sch.parentNode;
+    		com =com.parentNode;
+    		sch.onclick=function(){
+    			for(let i =0;i<sel.length;i++){
+    				sel[i].style.display="none";
+    			}
+    			document.getElementById("school-select").style.display="initial";
+    		}
+    		com.onclick=function(){
+    			for(let i =0;i<sel.length;i++){
+    				sel[i].style.display="none";
+    			}
+    			document.getElementById("company-select").style.display="initial";
+    		}
+	    	
+    	}
+    	/*function onSelect(){
+    		var lab=document.querySelectorAll("label");
+    		var sel=document.querySelectorAll("select");
+    		for(let i =0;i<lab.length;i++){
+    			lab[i].onclick=function(ev){
+    				for(let j =0;j<sel.length;j++){
+    				    sel[j].style.display="none";
+    			}
+    				var myId=ev.target.id;
+    				document.getElementById(myId+"-select").style.displayName="initial";
+    				
+    			}
+    		}
+    	}*/
+    	
+    </script>
+</body>
+</html>

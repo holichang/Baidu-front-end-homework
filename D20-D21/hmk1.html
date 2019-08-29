@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	    <input id="name" type="text" onkeydown="enterDown(event)">    
+        <button id="submit-btn" onclick="onBtn()">Submit</button>
+        <script type="text/javascript">
+            function onBtn(){
+            	var myIn=document.getElementById("name");
+                console.log(myIn.value);
+            }
+            function enterDown(event){
+            	var myIn=document.getElementById("name");
+            	var ev=event||window.event;
+            	if(ev.keyCode==13){
+            		console.log(myIn).value;
+            	}
+            	else if(ev.keyCode==27){
+            		myIn.value="";
+            		
+            	}
+            }
+        </script>
+	
+	</body>
+</html>
