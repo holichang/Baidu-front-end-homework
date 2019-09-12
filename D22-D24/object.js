@@ -352,6 +352,7 @@ menuArr.forEach(function(arr){
 						tempName=arr[0];
 						tempObj[tempName]={};
 						tempObj[tempName].name=arr[1];
+						root[prop][subPro][arr[0]]={};
 					}
 				}
 			}
@@ -363,5 +364,9 @@ menuArr.forEach(function(arr){
 	
 })
 console.log(menuObject);
+function showTree(){
+	document.getElementById("result-7").innerHTML=JSON.stringify(root);
+}
+
 //for ...in
 //arr.forEach()
