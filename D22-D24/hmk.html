@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				padding-top: 20px;
+			}
+			button{
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>编码一:Number</h1>
+		<div class="num">
+		    <label>Number A:<input id="radio-a" type="radio" name="math-obj" value="a"></label><input id="num-a" type="text">
+		    <label>Number B:<input id="radio-b" type="radio" name="math-obj" value="b"></label><input id="num-b" type="text">
+		</div>
+		<div class="btn1">
+		    <button class="isNum" onclick="isNum()">判断当前选中的输入框输入内容是否为数字</button>
+		    <button class="toChange" onclick="toChange()">把 A 四舍五入为 B 个小数位数的数字</button>
+		    <button class="toAbs" onclick="toAbs()">当前选中数字的绝对值</button>
+		    <button class="toUp" onclick="toUp()">对当前选中的数字进行上舍入</button>
+		    <button class="toDown" onclick="toDown()">对当前选中的数字进行下舍入</button>
+		    <button class="toMiddle" onclick="toMiddle()">把当前选中的数字四舍五入为最接近的整数</button>
+		    <button class="toMax" onclick="toMax()">返回 A 和 B 中的最高值</button>
+		    <button class="toMin" onclick="toMin()">返回 A 和 B 中的最低值</button>        
+		</div>
+		<p id="result1"></p>
+		<h1>编码二：String</h1>
+		<div class="string">
+		    <label>String A:
+		        <input id="radiostr-a" type="radio" checked="true" name="str-obj" value="a">
+		    </label>
+		    <textarea id="str-a"></textarea>
+		    <label>String B:
+		        <input id="radiostr-b" type="radio" name="str-obj" value="b">
+		    </label>
+		    <textarea id="str-b"></textarea>        
+		    <label>Num A：<input id="numstr-a" type="number" value="0"></label>
+		    <label>Num B：<input id="numstr-b" type="number" value="1"></label>
+		</div>
+		<div class="btn2">
+		    <button onclick="showLength()">获取当前选中输入的内容长度</button>
+		    <button onclick="show3rd()">当前选中输入中的第3个字符</button>
+		    <button onclick="concatAB()">把两个输入框的文字连接在一起输出（concat）</button>
+		    <button onclick="searchBinA()">输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）</button>
+		    <button onclick="searchAinB()">输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）</button>
+		    <button onclick="showAtoB()">使用slice获取选中输入框内容的部分内容，参数为num-a及num-b</button>
+		    <button onclick="countRow()">当前选中输入框的行数</button>
+		    <button onclick="showChats()">使用substr获取选中输入框内容的子字符串，参数为num-a及num-b</button>
+		    <button onclick="toUp()">把所选输入框中的内容全部转为大写</button>
+		    <button onclick="toLow()">把所选输入框中的内容全部转为小写</button>
+		    <button onclick="delSpace()">把所选输入框中内容的半角空格全部去除</button>
+		    <button onclick="changeA()">把所选输入框中内容的a全部替换成另外一个输入框中的内容</button>
+		</div>
+		<p id="result2"></p>
+		<h1>编码三</h1>
+		<p id="result3">去掉首尾空格、删除连续重复字符：见控制台</p>
+		<h1>编码四：对象</h1>
+		<p id="result4">理解对象：见控制台</p>
+		<p>二叉树遍历：前序遍历（中左右）；中序遍历（左中右）；后序遍历（左右中）：递归</p>
+		<div class="btn3">
+			<button onclick="getListWithDLR(tree)">把这个对象中所有的名字以“前序遍历”的方式全部输出到console中</button>
+			<button onclick="getListWithLDR(tree)">把这个对象中所有的名字以“中序遍历”的方式全部输出到console中</button>
+			<button onclick="getListWithLRD(tree)">把这个对象中所有的名字以“后序遍历”的方式全部输出到console中</button>
+		</div>
+		<h1>编码五：数组</h1>
+		<div class="array">
+			<input id="queue-input" type="text">
+			<p id="queue-ricont">队头在右：队列内容：apple-&gt;pear</p>    
+			<button id="in-rbtn" onclick="leUnShift()">入队</button>
+			<button id="out-rbtn" onclick="riPop()">出队</button>
+			<button id="font-rbtn" onclick="printRTop()">打印队头元素内容</button>
+			<button id="empty-rbtn" onclick="isrNull()()">判断队列是否为空</button>
+			<p id="queue-lecont">队头在左：队列内容：apple&lt;-pear</p>    
+			<button id="in-lbtn" onclick="riPush()">入队</button>
+			<button id="out-lbtn" onclick="leShift()">出队</button>
+			<button id="font-lbtn" onclick="printLTop()">打印队头元素内容</button>
+			<button id="empty-lbtn" onclick="islNull()()">判断队列是否为空</button>
+			<br />
+			<br />
+			<input id="stack-input" type="text">
+			<p id="stack-rcont">栈顶在右：栈内容：apple-&gt;pear</p>    
+			<button id="push-rbtn" onclick="pushRight()">进栈</button>
+			<button id="pop-rbtn" onclick="popRight()">退栈</button>
+			<button id="font-srbtn" onclick="printRStackTop()">打印栈顶元素内容</button>
+			<button id="empty-srbtn" onclick="isRStackNull()">判断栈是否为空</button>
+			<p id="stack-lcont">栈顶在左：栈内容：apple&lt;-pear</p>    
+			<button id="push-lbtn" onclick="pushLeft()">进栈</button>
+			<button id="pop-lbtn" onclick="popLeft()">退栈</button>
+			<button id="font-slbtn" onclick="printLStackTop()">打印栈顶元素内容</button>
+			<button id="empty-slbtn" onclick="isLStackNull()">判断栈是否为空</button>		
+		</div>
+		<h1>编码六：排序</h1>
+		<p id="rank-1">待排序数组：[43, 54, 4, -4, 84, 100, 58, 27, 140]</p>
+		<button id="rank-1-btn1" onclick="sortStoB()">从小到大排序</button>
+		<button id="rank-1-btn2" onclick="sortBtoS()">从大到小排序</button>
+		<p id="rank-1-result"></p>
+		<p id="rank-2">待排序数组：['apple', 'dog', 'cat', 'car', 'zoo', 'orange', 'airplane']</p>
+		<button id="rank-2-btn1" onclick="sortatoZ(arr2)">从a到z排序</button>
+		<button id="rank-2-btn2" onclick="sortZtoa(arr2)">从z到a排序</button>
+		<p id="rank-2-result"></p>
+		<p id="rank-3">待排序数组：[[10, 14], [16, 60], [7, 44], [26, 35], [22, 63]]</p>
+		<button id="rank-3-btn" onclick="sortBy2nd()">按照每个元素中第二个数从大到小的顺序进行排序输出</button>
+		<p id="rank-3-result"></p>
+		<p id="rank-4">待排序数组：见JS文件</p>
+		<button id="rank-4-btn" onclick="sortByValue()">按元素对象的value值从小到大进行排序后输出</button>
+		<p id="rank-4-result"></p>
+		<script type="text/javascript" src="hmk.js"></script>
+        <script type="text/javascript" src="object.js"></script>
+		<h1>编码七：数组和对象之间的转化</h1>
+		<p>见控制台</p>
+	</body>
+</html>
