@@ -59,7 +59,7 @@ function toAbs(){
 		show.innerHTML="当前输入框的内容不是数字";
 	}
 }
-function toUp(){
+function toUpNum(){
 	let myRadio=document.querySelector(".num input:checked").value;
     let num=document.getElementById("num-"+myRadio).value;
 	if(isNumber(num)){
