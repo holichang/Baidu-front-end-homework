@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<select id="year-select">
+		</select>
+		
+		<select id="month-select">
+		</select>
+		
+		<select id="day-select">
+		</select>
+		
+		<select id="hour-select">
+		    
+		</select>
+		
+		<select id="minite-select">
+		    
+		</select>
+		
+		<select id="second-select">
+		    
+		</select>
+		
+		<p id="result-wrapper"></p>
+		<script type="text/javascript">
+			/*
+			当变更任何一个select选择时，更新 result-wrapper 的内容
+			当所选时间早于现在时间时，文案为 现在距离 "所选时间" 已经过去 xxxx
+			当所选时间晚于现在时间时，文案为 现在距离 "所选时间" 还有 xxxx
+			注意当前时间经过所选时间时候的文案变化
+			注意选择不同月份的时候，日期的可选范围不一样，比如1月可以选31天，11月只有30天，注意闰年
+			同样，需要注意，通过优雅的函数封装，使得代码更加可读且可维护
+			 */
+			let yearSelect=document.getElementById("year-select");
+			let monthSelect=document.getElementById("month-select");
+			let daySelect=document.getElementById("day-select");
+			let hourSelect=document.getElementById("hour-select");
+			let minSelect=document.getElementById("minite-select");
+			let secSelect=document.getElementById("second-select");
+			let show=document.getElementById("result-wrapper");
+			let seList=document.querySelectorAll("select");
+			//用于设置选项
+			function setOption(a,b,obj){
+				if(obj.options!=null){
+					for (let i=obj.options.length;i>0;i--){
+						obj.remove(obj.i);
+					}
+				}
+				for (let i=a;i<=b;i++){
+					let child=document.createElement("option");
+					child.value=i;
+					child.innerHTML=i.toString();
+					obj.appendChild(child);
+				}
+			}
+			//用于设置所有的下拉框
+			function setSelect(){			
+				setOption(2000,2032,yearSelect);				
+				setOption(1,12,monthSelect);				
+				setOption(1,31,daySelect);			
+				setOption(0,23,hourSelect);			
+				setOption(0,59,minSelect);			
+				setOption(0,59,secSelect);
+			}
+			//根据所选年份改变2月份的天数
+			function changeDayByYear(){
+				if(monthSelect.selectedIndex==1){
+					if((2000+yearSelect.selectedIndex)%4==0){
+						setOption(1,29,daySelect);
+					}
+					else{
+						setOption(1,28,daySelect);
+				    }
+				}
+				
+			}
+			//根据所选月份改变天数
+			function changeDayByMonth(){
+				switch(monthSelect.selectedIndex+1){
+					case 1:
+					case 3:
+					case 5:
+					case 7:
+					case 8:
+					case 10:
+					case 12:
+					    setOption(1,31,daySelect);
+					    break;
+					case 4:
+					case 6:
+					case 9:
+					case 11:
+					    setOption(1,30,daySelect);
+					    break;
+					case 2:
+					    if((2000+yearSelect.selectedIndex)%4==0){
+							setOption(1,29,daySelect);
+							break;
+						}
+						else{
+							setOption(1,28,daySelect);
+							break;
+					    }
+				}
+			}
+			//用于显示星期几
+			function toWeekCh(n){
+				let arr=new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六",);
+				return arr[n];
+			}
+			//用于把时分秒小于10的数格式化为两位
+			function format(n){
+				n=parseInt(n);
+				if((n<10)&&n>=0){
+					return "0"+n;
+				}
+				else{
+					return n.toString();
+				}
+			}
+			function showResult(){
+				let year=yearSelect.options[yearSelect.selectedIndex].value;
+				let month=monthSelect.options[monthSelect.selectedIndex].value;
+				let day=daySelect.options[daySelect.selectedIndex].value;
+				let hour=hourSelect.options[hourSelect.selectedIndex].value;
+				let min=minSelect.options[minSelect.selectedIndex].value;
+				let sec=secSelect.options[secSelect.selectedIndex].value;
+				let month1=(parseInt(month)-1).toString();//new Date()中的月份为0-11
+				let hour1=format(hour);//创建时分秒的副本用于显示文本
+				let min1=format(min);
+				let sec1=format(sec);
+				let myDate=new Date(year,month1,day,hour,min,sec);//返回日期对象，以获得星期
+				let then=myDate.getTime();//返回毫秒数,Date.UTC返回的是UTC时间
+				let now=Date.now();
+				//直接用new Date()是基于系统设置的本地时区创建的
+				let week=toWeekCh(myDate.getDay());
+				let timeDiff,dayDiff,hourDiff,minDiff,secDiff;
+				
+				if(now<then){
+					timeDiff=then-now;
+					dayDiff=Math.floor(timeDiff/(24*3600*1000));
+					hourDiff=Math.floor((timeDiff-dayDiff*24*3600*1000)/(3600*1000));
+					minDiff=Math.floor((timeDiff-dayDiff*24*3600*1000-hourDiff*3600*1000)/(60*1000));
+					secDiff=Math.floor((timeDiff-dayDiff*24*3600*1000-hourDiff*3600*1000-minDiff*60*1000)/1000);
+					show.innerHTML="现在距离"+year+"年"+month+"月"+day+"日"+week+hour1+":"+min1+":"+sec1+"还有"+dayDiff+"天"+hourDiff+"小时"+minDiff+"分钟"+secDiff+"秒"; 
+				}
+				else{
+					timeDiff=now-then;
+					dayDiff=Math.floor(timeDiff/(24*3600*1000));
+					hourDiff=Math.floor((timeDiff-dayDiff*24*3600*1000)/(3600*1000));
+					minDiff=Math.floor((timeDiff-dayDiff*24*3600*1000-hourDiff*3600*1000)/(60*1000));
+					secDiff=Math.floor((timeDiff-dayDiff*24*3600*1000-hourDiff*3600*1000-minDiff*60*1000)/1000);
+					show.innerHTML="现在距离"+year+"年"+month+"月"+day+"日"+week+hour1+":"+min1+":"+sec1+"已经过去"+dayDiff+"天"+hourDiff+"小时"+minDiff+"分钟"+secDiff+"秒"; 
+				}
+				
+			}
+			window.onload=function(){
+				setSelect();
+				//所选年份改变时，2月天数跟着改变
+				yearSelect.addEventListener("change",changeDayByYear);
+				//所选月份改变时，该月天数跟着改变
+				monthSelect.addEventListener("change",changeDayByMonth);
+				for(let i=0;i<seList.length;i++){
+					//文案每秒一变
+					seList[i].addEventListener("change",setInterval(showResult,1000));
+				}
+			}
+			
+			
+		</script>
+	</body>
+</html>

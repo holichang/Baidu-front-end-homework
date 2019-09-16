@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p id="show1"></p>
+		<p id="show2"></p>
+		<script type="text/javascript">
+			let show1=document.getElementById("show1");		
+			let show2=document.getElementById("show2");
+			//此函数用于格式化小于10的数。
+			function format(n){
+				if((n>=0)&&(n<10)){
+					return "0"+n;
+				}
+				else{
+					return n;
+				}
+			}
+			//此函数用于格式化星期，有两种格式，返回数组
+			function showWeekday(n){
+				let arr=new Array(7);
+				arr[0]=["星期日","Sunday"];
+				arr[1]=["星期一","Monday"];
+				arr[2]=["星期二","Tuesday"];
+				arr[3]=["星期三","Wednesday"];
+				arr[4]=["星期四","Thursday"];
+				arr[5]=["星期五","Friday"];
+				arr[6]=["星期六","Saturday"];
+				return arr[n];
+			}
+			//此函数用于获取时间相关的值
+			function getTime(){
+				let time=[];
+				let myDate=new Date();
+				let year=myDate.getFullYear();
+				time.push(year);
+				let month=format(myDate.getMonth()+1);
+				time.push(month);
+				let dat=format(myDate.getDate());
+				time.push(dat);
+				let day=showWeekday(myDate.getDay());
+				time.push(day);
+				let hour=format(myDate.getHours());
+				time.push(hour);
+				let min=format(myDate.getMinutes());
+				time.push(min);
+				let sec=format(myDate.getSeconds());
+				time.push(sec);
+				return time;
+			}
+			//显示格式为 YYYY 年 MM 月 DD 日 星期 D HH:mm:ss
+			function showTime1(){
+				let myTime=getTime();
+				show1.innerHTML=myTime[0]+"年"+myTime[1]+"月"+myTime[2]+"日"+myTime[3][0]+myTime[4]+":"+myTime[5]+":"+myTime[6];
+			}
+			//输出格式变为：2008-10-10 Monday 07:10:30 PM
+			function showTime2(){
+				let myTime=getTime();
+				show2.innerHTML=myTime[0]+"-"+myTime[1]+"-"+myTime[2]+"\n"+myTime[3][1]+"\n"+myTime[4]+":"+myTime[5]+":"+myTime[6]+" PM";
+			}
+			
+			window.onload=function(){
+				setInterval(showTime1,1000);
+				setInterval(showTime2,1000);
+			}
+	
+		</script>
+	</body>
+</html>
