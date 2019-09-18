@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,body,div,input,ul,li{
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			li{
+				list-style-type: none;
+				height: 40px;
+				border: 1px solid #AAAAAA;
+				border-top-color:transparent ;
+				line-height: 40px;
+				
+			}
+			
+			.wrapper{
+				margin: 100px auto;
+				position: relative;
+				width: 400px;
+				height: 40px;
+			}
+			#email-input{
+				width: 400px;
+				height: 40px;
+				
+			}
+			#email-sug-wrapper{
+				width: 400px;
+				position: absolute;
+				top: 40px;
+				left: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+		    <input id="email-input" type="text">
+		    <ul id="email-sug-wrapper" class="email-sug"></ul>
+		</div>
+		<script type="text/javascript" src="hmk1.js"></script>
+	</body>
+</html>
