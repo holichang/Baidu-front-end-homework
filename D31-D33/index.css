@@ -1,0 +1,27 @@
+#table-wrapper{
+	width: 70%;
+	margin: 20px auto;
+}
+#data-table{
+	border-collapse: collapse;
+	width: 100%;
+}
+table,td,th{
+	border: 1px solid #000000;
+}
+td,th{
+	padding: 5px;
+	text-align: center;
+}
+caption{
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+#region-radio-wrapper,#product-radio-wrapper{
+	margin-top: 10px;
+	margin-left: 20px;
+}
+input{
+	margin-left: 20px;
+}
+
