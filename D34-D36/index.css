@@ -1,0 +1,45 @@
+#table-wrapper{
+	width: 70%;
+	margin: 20px auto;
+}
+#data-table{
+	border-collapse: collapse;
+	width: 100%;
+}
+table,td,th{
+	border: 1px solid #000000;
+}
+td,th{
+	padding: 5px;
+	text-align: center;
+}
+caption{
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+#region-radio-wrapper,#product-radio-wrapper{
+	margin-top: 10px;
+	margin-left: 20px;
+}
+input{
+	margin-left: 20px;
+}
+#charts{
+	margin: 0 auto;
+	width: 1500px;
+	height: 400px;
+}
+#bar,#line{
+	box-sizing: border-box;
+	width: 700px;
+	height: 300px;
+	margin-top: 50px;
+}
+#bar{
+	float: left;
+	margin-right: 100px;
+	/*border: 1px solid #000000;*/
+}
+#line{
+	/*border: 1px solid #000000;*/
+}
