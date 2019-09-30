@@ -29,17 +29,19 @@ input{
 	width: 1500px;
 	height: 400px;
 }
-#bar,#line{
+#bar{
 	box-sizing: border-box;
 	width: 700px;
 	height: 350px;
 	margin-top: 50px;
-}
-#bar{
 	float: left;
 	margin-right: 100px;
-	/*border: 1px solid #000000;*/
 }
+
 #line{
-	/*border: 1px solid #000000;*/
+	box-sizing: border-box;
+	width: 700px;
+	height: 300px;
+	margin-top: 80px;
+
 }
