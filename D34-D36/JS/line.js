@@ -62,21 +62,41 @@ function drawAxis(cvx,xStart,xSpace,yMax,prop){
 		cvx.fillText(i+1+"月",60+i*xSpace-10,290);
 	}
 	//画y轴刻度：
-	for(let i=0;i<Math.floor(yMax/10)+3;i++){
-		if(i%5==0){
-			cvx.moveTo(30,270-i*10*prop);
-			cvx.lineTo(40,270-i*10*prop);
-			cvx.font="14px serif";
-			cvx.textAlign="right";
-			cvx.fillText(i*10,25,270-i*10*prop+3);
-			
+	if(yMax<100){
+		for(let i=0;i<Math.floor(yMax/5)+2;i++){
+			if(i%2==0){
+				cvx.moveTo(30,270-i*5*prop);
+				cvx.lineTo(40,270-i*5*prop);
+				cvx.font="14px serif";
+				cvx.textAlign="right";
+				cvx.fillText(i*5,25,270-i*5*prop+3);
+				
+			}
+			else{
+				cvx.moveTo(35,270-i*5*prop);
+				cvx.lineTo(40,270-i*5*prop);
+			}
 		}
-		else{
-			cvx.moveTo(35,270-i*10*prop);
-			cvx.lineTo(40,270-i*10*prop);
-		}
+		cvx.stroke();
 	}
-	cvx.stroke();
+	else{
+		for(let i=0;i<Math.floor(yMax/10)+2;i++){
+			if(i%5==0){
+				cvx.moveTo(30,270-i*10*prop);
+				cvx.lineTo(40,270-i*10*prop);
+				cvx.font="14px serif";
+				cvx.textAlign="right";
+				cvx.fillText(i*10,25,270-i*10*prop+3);
+				
+			}
+			else{
+				cvx.moveTo(35,270-i*10*prop);
+				cvx.lineTo(40,270-i*10*prop);
+			}
+		}
+		cvx.stroke();
+	}
+	
 }
 //画单条折线
 function drawOneLine(region,product,cantxt,lineData,xStart,xSpace,prop){
