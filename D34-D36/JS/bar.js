@@ -11,15 +11,15 @@ function drawBar(){
 	//将每个地区构造为对象，data属性存放该地区的数据，color存放该地区的颜色，分别是手机、笔记本、音箱的颜色
 	let regGroup=[];
 	let east=new Object();
-	east.color=["#FFB6C1","#98FB98","#B0E0E6"];
+	east.color=["#FFB6C1","#98FB98","#87CEFA"];
 	east.data=[];
 	east.name="华东";
 	let north=new Object();
-	north.color=["#F08080","#3CB371","#00CED1"];
+	north.color=["#F08080","#3CB371","#6495ED"];
 	north.data=[];
 	north.name="华北";
     let south=new Object();
-	south.color=["#CD5C5C","#2E8B57","#008B8B"];
+	south.color=["#CD5C5C","#2E8B57","#4682B4"];
 	south.data=[];
 	south.name="华南";
 	for(let i=0;i<myData.length;i++){
@@ -108,19 +108,21 @@ function drawBar(){
 	for(let i=0;i<12;i++){
 		svgText(xmlns,i+1+"月",xInit+i*50+4,290,myTxt);
 	}
-	
+	let yLeg=-15;
 	//画柱子，先循环区域
 	for(let i=0;i<regGroupCount;i++){
 		let proCount=regGroup[i].data.length;//该地区商品种类个数
-		drawRegionBar(regGroup[i],xmlns,width,prop,xInit,myBar,axis,xSpace,myTxt);
+		drawRegionBar(regGroup[i],xmlns,width,prop,xInit,myBar,axis,xSpace,myTxt,yLeg);
 		xInit=xInit+width;
+		yLeg+=25
 	}
+	//添加图例
 	
 	
 	
 }
 //画不同地区的柱子,参数为区域数据对象
-function drawRegionBar(regBarData,xmlns,width,prop,xInit,myBar,axis,xSpace,axisText){
+function drawRegionBar(regBarData,xmlns,width,prop,xInit,myBar,axis,xSpace,axisText,yLegend){
 	if(regBarData.data.length==0){
 		return;
 	}
@@ -148,6 +150,20 @@ function drawRegionBar(regBarData,xmlns,width,prop,xInit,myBar,axis,xSpace,axisT
 			svgRectNode(xmlns,width,barData[j]*prop,xInit,270-lastHeight[j]*prop,proColor,myBar,axis);
 			xInit=xInit+xSpace+39;
 		}
+		//添加图例
+		let myLegend=document.createElementNS(xmlns,"rect");
+		myLegend.setAttribute("width","30");
+	    myLegend.setAttribute("height","20");
+	    myLegend.setAttribute("x",120+i*200);
+	    myLegend.setAttribute("y",yLegend);
+	    myLegend.setAttribute("style","fill:"+proColor+";stroke-width:0");
+	    myBar.appendChild(myLegend);
+	    let legendText=document.createElementNS(xmlns,"text");
+	    legendText.setAttribute("fill","black");
+		legendText.setAttribute("x",155+i*200);
+		legendText.setAttribute("y",yLegend+15);
+		legendText.innerHTML=regBarData.name+"地区"+myPro;
+		myBar.appendChild(legendText);
 	}
 
 }
@@ -219,3 +235,4 @@ function initBar(myBar,xmlns){
 	myBar.appendChild(axis);
 	myBar.appendChild(myTxt);
 }
+
