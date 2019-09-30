@@ -32,7 +32,7 @@ input{
 #bar,#line{
 	box-sizing: border-box;
 	width: 700px;
-	height: 300px;
+	height: 350px;
 	margin-top: 50px;
 }
 #bar{

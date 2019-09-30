@@ -108,7 +108,7 @@ function drawBar(){
 	for(let i=0;i<12;i++){
 		svgText(xmlns,i+1+"月",xInit+i*50+4,290,myTxt);
 	}
-	let yLeg=-15;
+	let yLeg=-30;
 	//画柱子，先循环区域
 	for(let i=0;i<regGroupCount;i++){
 		let proCount=regGroup[i].data.length;//该地区商品种类个数
@@ -154,13 +154,13 @@ function drawRegionBar(regBarData,xmlns,width,prop,xInit,myBar,axis,xSpace,axisT
 		let myLegend=document.createElementNS(xmlns,"rect");
 		myLegend.setAttribute("width","30");
 	    myLegend.setAttribute("height","20");
-	    myLegend.setAttribute("x",120+i*200);
+	    myLegend.setAttribute("x",100+i*180);
 	    myLegend.setAttribute("y",yLegend);
 	    myLegend.setAttribute("style","fill:"+proColor+";stroke-width:0");
 	    myBar.appendChild(myLegend);
 	    let legendText=document.createElementNS(xmlns,"text");
 	    legendText.setAttribute("fill","black");
-		legendText.setAttribute("x",155+i*200);
+		legendText.setAttribute("x",135+i*180);
 		legendText.setAttribute("y",yLegend+15);
 		legendText.innerHTML=regBarData.name+"地区"+myPro;
 		myBar.appendChild(legendText);
