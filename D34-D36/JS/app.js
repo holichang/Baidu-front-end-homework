@@ -30,19 +30,47 @@ proWrapper.addEventListener("click",function(ev){
 dataTable.addEventListener("mouseover",function(ev){
 	let myEv=ev||window.event;
 	let myTarget=myEv.target||myEv.srcElement;
+	let pro,reg;
+	let trId=[];
 	if(myTarget.tagName.toLocaleLowerCase()=="td"){
-		myTarget.style.backgroundColor="#4169E1";
-		myTarget.style.color="#FFFFFF";
+		myTarget.parentNode.style.backgroundColor="#4169E1";
+		myTarget.parentNode.style.color="#FFFFFF";
+		setMergedWhite();
+		trId=myTarget.parentNode.id.split("-");
+		if(regData.some(function(data){
+			return data.value==trId[0];
+		})){
+			reg=trId[0];
+			pro=trId[1];
+		}
+		else{
+			reg=trId[1];
+			pro=trId[0];
+		}
+		drawBar(reg,pro);
+		drawLine(reg,pro);
 	}
+	
+	
 });
 dataTable.addEventListener("mouseout",function(ev){
 	let myEv=ev||window.event;
 	let myTarget=myEv.target||myEv.srcElement;
 	if(myTarget.tagName.toLocaleLowerCase()=="td"){
-		myTarget.style.backgroundColor="#FFFFFF";
-		myTarget.style.color="#000000";
+		myTarget.parentNode.style.backgroundColor="#FFFFFF";
+		myTarget.parentNode.style.color="#000000";
 	}
+	setMergedWhite();
 });
+
+//把合并的单元格背景置为白色
+function setMergedWhite(){
+	let mergeList=document.getElementsByClassName("merged");
+	for(let i=0;i<mergeList.length;i++){
+		mergeList[i].style.backgroundColor="#FFFFFF";
+		mergeList[i].style.color="#000000";
+	}
+}
 
 /*document.body.onload=function(){
 	drawBar();

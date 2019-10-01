@@ -1,4 +1,4 @@
-function drawBar(){
+function drawBar(reg,pro){
 	let xmlns="http://www.w3.org/2000/svg";
 	let myCharts=document.getElementById("charts");
 	let myBar=document.getElementById("bar");
@@ -7,7 +7,17 @@ function drawBar(){
 	let myTxt=document.getElementById("axisTxt");
 	let xAxis=document.getElementById("xAxis");
 	//获取数据
-	let myData=getData();//获取到的是对象数组
+	let myData=[];
+	if(arguments.length==0){
+		myData=getData();//获取到的是对象数组
+	}
+	if(arguments.length==2){
+		sourceData.forEach(function(data){
+			if((data.product==pro)&&(data.region==reg)){
+				myData.push(data);
+			}
+		});
+	}
 	//将每个地区构造为对象，data属性存放该地区的数据，color存放该地区的颜色，分别是手机、笔记本、音箱的颜色
 	let regGroup=[];
 	let east=new Object();
@@ -235,4 +245,8 @@ function initBar(myBar,xmlns){
 	myBar.appendChild(axis);
 	myBar.appendChild(myTxt);
 }
-
+function showOneBar(reg,pro){
+	let oneBarData;
+	
+	
+}

@@ -117,6 +117,7 @@ function setMergedTd(name,n){
 	let myTd=document.createElement("td");
 	myTd.innerText=name;
 	myTd.rowSpan=n;
+	myTd.className="merged";
 	return myTd;
 }
 //添加单行data为数据对象,n为地区种类数,只有当n=1的时候，才会把地区排到前面
@@ -131,12 +132,14 @@ function setTableTr(data,n){
 		//myTr.appendChild(tdReg);
 		//地区名不添加进来，用于放在合并单元格中
 		myTr.appendChild(tdPro);
+		myTr.id=data.region+"-"+data.product;
 	}
 	//如果b为undefined也走向else
 	else{
 		//myTr.appendChild(tdPro);
 		//不添加商品名
 	    myTr.appendChild(tdReg);
+	    myTr.id=data.product+"-"+data.region;
 	}
 	for(let i=1;i<13;i++){
     	let TdSale=document.createElement("td");
@@ -147,7 +150,5 @@ function setTableTr(data,n){
 }
 //每次重新生成表格前，先把表格内容置空
 function clearTable(table){
-	for(let i=table.childNodes.length-1;i>=0;i--){
-		table.removeChild(table.childNodes[i]);
-	}
+	table.innerHTML="";
 }

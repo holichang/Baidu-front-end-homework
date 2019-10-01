@@ -1,9 +1,20 @@
 if(canvas.getContext){
 	cvx=canvas.getContext("2d");
 }
-function drawLine(){
+function drawLine(reg,pro){
 	//先获取数据
-	let myData=getData();//获取到的是对象数组
+    //获取到的是对象数组
+	let myData=[];
+	if(arguments.length==0){
+		myData=getData();//获取到的是对象数组
+	}
+	if(arguments.length==2){
+		sourceData.forEach(function(data){
+			if((data.product==pro)&&(data.region==reg)){
+				myData.push(data);
+			}
+		});
+	}
 	//获取数据中sale的最大值
 	let yMax=myData[0].sale[0];
 	for(let i=0;i<myData.length;i++){
