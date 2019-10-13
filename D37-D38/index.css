@@ -1,0 +1,98 @@
+html,body,table,td,tr,th{
+	margin: 0;
+	padding: 0;
+}
+#table-wrapper{
+	width: 70%;
+	margin: 20px auto;
+}
+#data-table{
+	border-collapse: collapse;
+	width: 100%;
+}
+table,td,th{
+	border: 1px solid #000000;
+}
+td,th{
+	padding: 5px;
+	text-align: center;
+}
+caption{
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+#save-btn{
+	width: 80px;
+	height: 36px;
+	margin-top: 10px;
+	border-radius: 5px;
+	background-color: #4169E1;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 36px;
+	font-size: 16px;
+	float: right;
+}
+#region-radio-wrapper,#product-radio-wrapper{
+	margin-top: 10px;
+	margin-left: 20px;
+}
+input{
+	margin-left: 20px;
+}
+#charts{
+	margin: 0 auto;
+	width: 1500px;
+	height: 400px;
+}
+#bar{
+	box-sizing: border-box;
+	width: 700px;
+	height: 350px;
+	margin-top: 50px;
+	float: left;
+	margin-right: 100px;
+}
+
+#line{
+	box-sizing: border-box;
+	width: 700px;
+	height: 300px;
+	margin-top: 80px;
+
+}
+.sale{
+	padding: 0;
+	position: relative;
+	cursor: default;
+	font-size: 18px;
+	line-height: 28px;
+	
+}
+.emit{
+	position: absolute;
+	right: 5px;
+	color: #FFFFFF;
+	font-size: 12px;
+	line-height: 28px;
+	visibility: hidden;
+}
+.td-input{
+    width: 60px;
+    height: 20px;
+    margin-left: 0px;
+    margin-top: 5px;
+    
+}
+.confirm{
+	margin-left: 5px;
+	font-size: 12px;
+}
+.cancle{
+	margin-left: 5px;
+	font-size: 12px;
+}
+.emit-input{
+	display: none;
+	padding: 5px;
+}
