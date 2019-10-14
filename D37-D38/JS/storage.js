@@ -22,15 +22,15 @@ function dataStorage(){
 		}
 		updateSale(reg,pro,tempSale);
 	}
-	localStorage.setItem("data",JSON.stringify(originData));
-	sourceData=JSON.parse(localStorage.getItem("data")); 
+	localStorage.setItem("data",JSON.stringify(sourceData));
+	//sourceData=JSON.parse(localStorage.getItem("data")); 
 	drawLine();
 	drawBar();
 }
 function updateSale(reg,pro,tempSale){
-	for(let i=0;i<originData.length;i++){
-		if((originData[i].region==reg)&&(originData[i].product==pro)){
-			originData[i].sale=tempSale;
+	for(let i=0;i<sourceData.length;i++){
+		if((sourceData[i].region==reg)&&(sourceData[i].product==pro)){
+			sourceData[i].sale=tempSale;
 		}
 	}
 }

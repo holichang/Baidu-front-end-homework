@@ -1,10 +1,12 @@
 let regWrapper=document.getElementById("region-radio-wrapper");
 let proWrapper=document.getElementById("product-radio-wrapper");
 let dataTable=document.getElementById("data-table");
+let clearBtn=document.querySelector("#clear");
 //用于存储之前的数据
 let tdNum;
 //localStorage.clear();
 //把原始数据存进localStorage,后续的操作基于存储数据
+//把原始数据和用于操作的数据分开
 if(!localStorage.getItem("data")){
 	localStorage.setItem("data",JSON.stringify(originData));
 }
@@ -109,6 +111,13 @@ document.addEventListener("click",function(ev){
 		}
 		if(myTarget.id=="save-btn"){
 			dataStorage();
+		}
+		else if(myTarget.id=="clear"){
+			localStorage.setItem("data",JSON.stringify(originData));
+			sourceData=JSON.parse(localStorage.getItem("data"));
+			showTable();
+			drawLine();
+			drawBar();
 		}
 	}
 	

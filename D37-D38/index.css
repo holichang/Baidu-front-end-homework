@@ -21,8 +21,7 @@ caption{
 	font-size: 20px;
 	margin-bottom: 10px;
 }
-#save-btn{
-	width: 80px;
+#table-wrapper>button{
 	height: 36px;
 	margin-top: 10px;
 	border-radius: 5px;
@@ -31,7 +30,15 @@ caption{
 	text-align: center;
 	line-height: 36px;
 	font-size: 16px;
+	
+}
+#save-btn{
+	width: 80px;
 	float: right;
+}
+#clear{
+	width: 120px;
+	float: left;
 }
 #region-radio-wrapper,#product-radio-wrapper{
 	margin-top: 10px;
